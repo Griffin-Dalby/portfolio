@@ -11,6 +11,7 @@
 
 // Webpage
 #boot-screen {
+
     #boot-text {
         color: #ffffff;
         font-family: 'JetBrains Mono', sans-serif;
@@ -26,7 +27,7 @@
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    padding: 3rem;
+    padding: 1rem;
     white-space: pre-wrap;
     z-index: 1000;
     display: flex;

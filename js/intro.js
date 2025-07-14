@@ -70,7 +70,7 @@ const heroCode = [
     () => ``,
     () => `     self.name = 'Griffin Dalby'`,
     () => `     self.role = 'Full-Stack Roblox Developer'`,
-    () => `     self.experience = 10 --> Years`,
+    () => `     self.experience = 6 --> Years`,
     () => `     self.passions = {'Clean Code', 'System Architecture', 'Game Logic'}`,
     () => ``,
     () => `     self.stats = {`,
