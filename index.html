@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Griffin Dalby</title>
+        
+        <!-- Stylesheets -->
+        <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
+
+        <link href="./css/bootscreen.css" rel="stylesheet" >
+        <link href="./css/index.css" rel="stylesheet" >
+        <link href="./css/prism.css" rel="stylesheet" >
+
+        <link href="./css/tooltip.css" rel="stylesheet" >
+
+        <!-- Fonts -->
+
+    </head>
+    <body style="background-color: rgb(0, 0, 0);">
+        <!-- Webpage -->
+        <script src="./js/prism.js"></script>
+
+        <div id="boot-screen">
+            <pre id="boot-text" class="boot-text language-lua"></pre>
+        </div>
+
+        <main id="site-content" style="display: none;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm" id="hero-left">
+                        <h1>Griffin Dalby</h1>
+                        <h2>Full-Stack | System Architect | Efficient & Scalable Programming </h2>
+                        <h3>With each project I design, I prioritize quality out of love for the craft, because amazing players deserve amazing things.</h2>
+                        <h3>A little about me, I got really interested in programming around the age of ten, eventually I discovered roblox, and since then I've been making constantly sharpening my skills, as well as utilizing other languages to further improve, and get into other fields.</h2>
+                        <h3>Anyways, I focus on having very modular code and clean game logic & mechanics, I really hate a messy codebase, and I'll put the time in going the extra mile, pushing and optimizing systems, all that good stuff.</h2>
+                    </div>
+                    <div class="col-sm" id="hero-right">
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="./js/typer.js"></script>
+        <script src="./js/intro.js"></script>
+
+        <!-- Tools -->
+        <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            const button = document.querySelector('#button');
+            const tooltip = document.querySelector('#tooltip');
+
+            Popper.createPopper(button, tooltip, {
+                placement: 'right',
+            });
+        </script>
+    </body>
+</html>

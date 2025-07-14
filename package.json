@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.3.7"
+  },
+  "name": "griffin-dalby-portfolio",
+  "version": "1.0.0",
+  "description": "My personal programming portfolio",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Griffin-Dalby/portfolio.git"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "Griffin Dalby",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Griffin-Dalby/portfolio/issues"
+  },
+  "homepage": "https://github.com/Griffin-Dalby/portfolio#readme"
+}

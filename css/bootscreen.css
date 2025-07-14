@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Jetbrains Mono";
+  src: url("../assets/fonts/ttf/JetBrainsMono-Regular.ttf");
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+#boot-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 3rem;
+  white-space: pre-wrap;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+#boot-screen #boot-text {
+  color: #ffffff !important;
+  font-family: "JetBrains Mono", monospace !important;
+  transition: opacity 1s ease;
+  font-size: 0.8rem;
+}
+#boot-screen #boot-text::after {
+  content: "_";
+  animation: blink 1s step-end infinite;
+}/*# sourceMappingURL=bootscreen.css.map */

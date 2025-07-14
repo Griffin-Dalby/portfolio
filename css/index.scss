@@ -1,0 +1,41 @@
+// Fonts
+@font-face {
+    font-family: 'JetBrains Mono Bold';
+    src: url('../assets/fonts/ttf/JetBrainsMono-Bold.ttf');
+}
+
+// Variables
+// Hero
+#site-content {
+    .container-fluid {
+        .row {
+            #hero-left {
+                h1 {
+                    padding-top: .25rem;
+                    font-size: 4rem;
+                }
+
+                h2 {
+                    font-size: 2rem;
+                }
+
+                h3 {
+                    font-size: 1rem;
+                }
+
+                h1, h2, h3 {
+                    text-align: right;
+                    color: #D8DBE2;
+
+                    font-family: 'JetBrains Mono Bold', sans-serif;
+                }
+            }
+
+            #hero-right {
+                h1 {
+                    font-family: 'JetBrains Mono Bold', sans-serif;
+                }
+            }
+        }
+    }
+}

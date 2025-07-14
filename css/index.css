@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "JetBrains Mono Bold";
+  src: url("../assets/fonts/ttf/JetBrainsMono-Bold.ttf");
+}
+#site-content .container-fluid .row #hero-left h1 {
+  padding-top: 0.25rem;
+  font-size: 4rem;
+}
+#site-content .container-fluid .row #hero-left h2 {
+  font-size: 2rem;
+}
+#site-content .container-fluid .row #hero-left h3 {
+  font-size: 1rem;
+}
+#site-content .container-fluid .row #hero-left h1, #site-content .container-fluid .row #hero-left h2, #site-content .container-fluid .row #hero-left h3 {
+  text-align: right;
+  color: #D8DBE2;
+  font-family: "JetBrains Mono Bold", sans-serif;
+}
+#site-content .container-fluid .row #hero-right h1 {
+  font-family: "JetBrains Mono Bold", sans-serif;
+}/*# sourceMappingURL=index.css.map */
