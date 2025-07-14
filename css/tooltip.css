@@ -1,4 +1,7 @@
-#tooltip {
+[role='tooltip'] {
+    display: none;
+    font-display: none;
+
     background: #333;
     color: white;
     font-weight: bold;

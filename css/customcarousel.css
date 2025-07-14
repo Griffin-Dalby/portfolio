@@ -1,0 +1,70 @@
+:root {
+    --single-set-width: 1264px; /* Default fallback */
+}
+
+.carousel-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    background: #000000;
+    padding: 2rem 0;
+    cursor: grab;
+}
+
+.carousel-container:active {
+    cursor: grabbing;
+}
+
+.carousel-track {
+    display: flex;
+    animation: scroll-left 20s linear infinite;
+    width: fit-content;
+    transition: transform 0.1s ease-out;
+}
+
+.carousel-card {
+    background: #444 !important;
+    color: #fff !important;
+    flex: 0 0 auto;
+    margin-right: 1rem;
+    width: 300px;
+}
+
+.carousel-card:last-child {
+    margin-right: 1rem; /* Keep margin on last child too for seamless loop */
+}
+
+@keyframes scroll-left {
+    from { 
+        transform: translateX(0); 
+    }
+    to { 
+        transform: translateX(calc(-1 * var(--single-set-width))); 
+    }
+}
+
+.carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+.carousel-container.dragging .carousel-track {
+    animation-play-state: paused;
+}
+
+.carousel-container.dragging .card {
+    pointer-events: none;
+}
+
+.card {
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}

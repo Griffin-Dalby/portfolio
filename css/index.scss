@@ -4,10 +4,15 @@
     src: url('../assets/fonts/ttf/JetBrainsMono-Bold.ttf');
 }
 
+@font-face {
+    font-family: 'JetBrains Mono ExtraBold';
+    src: url('../assets/fonts/ttf/JetBrainsMono-ExtraBold.ttf');
+}
+
 // Variables
 // Hero
 #site-content {
-    .container-fluid {
+    #hero {
         .row {
             #hero-left {
                 h1 {
@@ -32,10 +37,30 @@
             }
 
             #hero-right {
-                h1 {
-                    font-family: 'JetBrains Mono Bold', sans-serif;
+                pre {
+                    width: 100% !important;
                 }
             }
         }
     }
+
+    #projects {
+        h1 {
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            color: #fff;
+            font-family: 'JetBrains Mono ExtraBold', monospace;
+        }
+    }
+}
+
+hr {
+    color: #fff;
+
+    margin-left: 12px;
+    margin-right: 12px;
+
+    border-top-width: 4px;
 }

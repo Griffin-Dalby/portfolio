@@ -1,20 +1,19 @@
-const bootText = document.getElementById('boot-text')
+function typeNextLine(id, lines, i = 0) {
+    const text = document.getElementById(id)
 
-function typeNextLine(lines, clickableElements, i = 0) {
     return new Promise((resolve) => {
-        bootText.textContent = ''
-        clickableElements = clickableElements || [];
+        text.textContent = ''
         
         function typeNext() {
             if (i >= lines.length) {
-                finishBootSequence(clickableElements);
+                finishBootSequence(text);
                 resolve();
                 return;
             }
             
             const nextLine = lines[i];
-            bootText.textContent += nextLine() + ((i + 1 >= lines.length) ? "" : "\n");
-            Prism.highlightElement(bootText);
+            text.textContent += nextLine() + ((i + 1 >= lines.length) ? "" : "\n");
+            Prism.highlightElement(text);
             i++;
             
             setTimeout(typeNext, 30);
@@ -24,26 +23,8 @@ function typeNextLine(lines, clickableElements, i = 0) {
     });
 }
 
-function finishBootSequence(clickableElements) {
-    Prism.highlightElement(bootText);
-    setTimeout(() => {
-        addClickableElements(clickableElements);
-    }, 100);
-}
-
-function addClickableElements(clickableElements) {
-    const lines = bootText.innerHTML.split('\n');
-    
-    clickableElements.forEach(({ line, text, href }) => {
-        if (lines[line]) {
-            lines[line] = lines[line].replace(
-                text,
-                `<a href="${href}" class="clickable">${text}</a>`
-            );
-        }
-    });
-    
-    bootText.innerHTML = lines.join('\n');
+function finishBootSequence(text) {
+    Prism.highlightElement(text);
 }
 
 exports = {

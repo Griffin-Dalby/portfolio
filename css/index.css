@@ -2,21 +2,39 @@
   font-family: "JetBrains Mono Bold";
   src: url("../assets/fonts/ttf/JetBrainsMono-Bold.ttf");
 }
-#site-content .container-fluid .row #hero-left h1 {
+@font-face {
+  font-family: "JetBrains Mono ExtraBold";
+  src: url("../assets/fonts/ttf/JetBrainsMono-ExtraBold.ttf");
+}
+#site-content #hero .row #hero-left h1 {
   padding-top: 0.25rem;
   font-size: 4rem;
 }
-#site-content .container-fluid .row #hero-left h2 {
+#site-content #hero .row #hero-left h2 {
   font-size: 2rem;
 }
-#site-content .container-fluid .row #hero-left h3 {
+#site-content #hero .row #hero-left h3 {
   font-size: 1rem;
 }
-#site-content .container-fluid .row #hero-left h1, #site-content .container-fluid .row #hero-left h2, #site-content .container-fluid .row #hero-left h3 {
+#site-content #hero .row #hero-left h1, #site-content #hero .row #hero-left h2, #site-content #hero .row #hero-left h3 {
   text-align: right;
   color: #D8DBE2;
   font-family: "JetBrains Mono Bold", sans-serif;
 }
-#site-content .container-fluid .row #hero-right h1 {
-  font-family: "JetBrains Mono Bold", sans-serif;
+#site-content #hero .row #hero-right pre {
+  width: 100% !important;
+}
+#site-content #projects h1 {
+  text-align: center;
+}
+#site-content #projects h1, #site-content #projects h2, #site-content #projects h3 {
+  color: #fff;
+  font-family: "JetBrains Mono ExtraBold", monospace;
+}
+
+hr {
+  color: #fff;
+  margin-left: 12px;
+  margin-right: 12px;
+  border-top-width: 4px;
 }/*# sourceMappingURL=index.css.map */
