@@ -11,10 +11,21 @@
 
 // Variables
 // Hero
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 #site-content {
     #hero {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+
         .row {
             #hero-left {
+                position: relative;
+
                 h1 {
                     padding-top: .25rem;
                     font-size: 4rem;
@@ -34,6 +45,10 @@
 
                     font-family: 'JetBrains Mono Bold', sans-serif;
                 }
+
+                .web-code-page {
+                    text-decoration: none;
+                }
             }
 
             #hero-right {
@@ -41,17 +56,6 @@
                     width: 100% !important;
                 }
             }
-        }
-    }
-
-    #projects {
-        h1 {
-            text-align: center;
-        }
-
-        h1, h2, h3 {
-            color: #fff;
-            font-family: 'JetBrains Mono ExtraBold', monospace;
         }
     }
 }

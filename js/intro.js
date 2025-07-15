@@ -39,6 +39,13 @@ const moduleLines = [
     () => `     )`,
     () => `end`,
     () => ``,
+    () => `function portfolio:getPage(pageName: string) : types.Page`,
+    () => `     local foundPage = self.webpage:getPage(pageName)`,
+    () => '     assert(foundPage, `[{script.Name}] Failed to find page w/ name "{pageName or \'<none>\'}"`)',
+    () => `     `,
+    () => `     return foundPage`,
+    () => `end`,
+    () => ``,
     () => `return portfolio`
 ].flat()
 
@@ -59,6 +66,15 @@ const scriptLines = [
     () => `portfolioController:render()`
 ].flat()
 
+const heroWebCode = [
+    () => `local portfolio = require(script.portfolio)\n\nlocal portfolioController = portfolio.new()\nportfolioController:render()`,
+    () => ``,
+    () => `local projects = portfolioController:getPage('projects') --> Click me!`,
+    () => `local services = portfolioController:getPage('services')`,
+    () => `local aboutMe = portfolioController:getPage('aboutMe')`,
+    () => `local contactMe = portfolioController:getPage('contactMe')`,
+].flat()
+
 const heroCode = [
     () => `local types = require(script.types)`,
     () => ``,
@@ -71,10 +87,15 @@ const heroCode = [
     () => `     self.name = 'Griffin Dalby'`,
     () => `     self.role = 'Full-Stack Roblox Developer'`,
     () => `     self.experience = 6 --> Years`,
-    () => `     self.passions = {'Clean Code', 'System Architecture', 'Game Logic'}`,
+    () => `     self.passions = {`,
+    () => `         'Clean Code',`,
+    () => `         'System Architecture',`,
+    () => `         'Game Logic'`,
+    () => `     }`,
     () => ``,
     () => `     self.stats = {`,
-    () => `             languages = {'LuaU', 'Node.JS / JS', 'C#'}`,                 
+    () => `         languages = {'LuaU', 'Node.JS / JS', 'C#'}`,
+    () => `         studioCollabs = {'Lost Hope Studios'}`,           
     () => `     }`,
     () => ``,
     () => `     return self`,
@@ -93,8 +114,8 @@ const heroCode = [
 const heroLines = [
     'Griffin Dalby',
     'Full-Stack | System Architect | Efficient & Scalable Programming',
-    'I\'ve been obsessed with creating seamless player experiences since I was ten. What started as curiosity about how games work became a decade-long journey of mastering system architecture and clean code practices.',
-    'Currently shipping high-performance systems while building open-source tools that help other developers write better code. Every project gets the same treatment: modular design, optimized performance, and that extra polish that makes players stick around.'
+    'I build fast, modular, and polished systems for Roblox games — from low-latency combat to dev frameworks like Sawdust. Ever since I was a kid I\'ve been obsessed with programming, and in 2018 I started the project that got me interested in LuaU, and ever since then I\'ve been grinding to improve and have been living my early Game Dev dreams that started all the way back then.',
+    'My main priority is shipping high-performance systems, and building open-source tools that help me, and other developers write better, more efficient code. Every one of my projects get the same treatment: modular design, optimized performance, and that extra polish that makes players stick around.'
 ]
 
 
@@ -168,8 +189,52 @@ typeNextLine('boot-text', moduleLines).then(()=>{
                     .then(() => typeWriterWords(desc1, heroLines[2], 0, 10))
                     .then(() => typeWriterWords(desc2, heroLines[3], 0, 10))
                     .finally(loadVideosAfterAnimation)
+                    
+                const pre = document.createElement('pre')
+                const code = document.createElement('code')
+                code.className = 'language-lua'
+                code.id = 'hero-web-code'
 
-                typeNextLine('hero-code', heroCode)
+                pre.appendChild(code)
+                heroLeft.appendChild(pre)
+
+                typeNextLine('hero-griff-code', heroCode)
+                typeNextLine('hero-web-code', heroWebCode).then(() => {
+                    const elems = document.getElementById('hero-web-code').childNodes
+                    function makeA(href, innerHTML) {
+                        const a = document.createElement('a')
+                        a.href = href
+                        a.innerHTML = innerHTML
+                        a.className = 'web-code-page'
+
+                        return a
+                    }
+
+                    for (let index = 0; index < elems.length; index++) {
+                        const element = elems.item(index);
+
+                        switch (element.textContent) {
+                            case " projects ":
+                                element.replaceWith(makeA('#', ' projects '))
+                                break;
+
+                            case " services ":
+                                element.replaceWith(makeA('#', ' services '))
+                                break;
+                        
+                            case " aboutMe ":
+                                element.replaceWith(makeA('#', ' aboutMe '))
+                                break;
+
+                            case " contactMe ":
+                                element.replaceWith(makeA('#', ' contactMe '))
+                                break;
+
+                            default:
+                                break;
+                        }
+                    };
+                })
 
                 // Carousel
                 const projects = [
@@ -201,151 +266,111 @@ typeNextLine('boot-text', moduleLines).then(()=>{
                         description: 'Magical fantasy game where you can gain new abilities and take them onto the battlefield to fight until last player standing.',
                         tech: 'LuaU, Combat & Rounds systems, VFX'
                     }
-                ]
+                ];
 
-                function createCard(info) {
-                    const cardDiv = document.createElement('div');
-                    cardDiv.className = 'carousel-card';
-                    
-                    cardDiv.innerHTML = `
-                        <div class="card h-100 shadow-sm">
-                            <!--<video class="card-img-top" autoplay muted loop playsinline>
-                                <source src="./assets/vids/hero/${info.videoId}.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>-->
-                            <div class="video-placeholder" data-src="${info.videoId}">
-                                <div class="loading-placeholder">Loading...</div>
-                            </div>
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title mb-1">${info.title}</h5>
-                                <p class="text-muted small mb-2">${info.group}</p>
-                                <p class="card-text flex-grow-1">${info.description}</p>
-                                <div class="mt-auto">
-                                    <small class="text-muted">${info.tech}</small>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    
-                    return cardDiv;
-                }
+                const container = document.querySelector('.carousel-wrapper')
+                const content   = document.querySelector('#carousel-content')
 
-                function initializeCarousel() {
-                    const track = document.getElementById('carousel-track');
-                    const container = document.querySelector('.carousel-container');
+                let pressed = false;
+                let startX, x
+
+                function createCarouselItems() {
+                    const carouselContent = document.getElementById('carousel-content');
                     
-                    // Create cards twice to ensure smooth infinite loop
-                    const allCards = [];
-                    
-                    projects.forEach(vidInfo => {
-                        allCards.push(createCard(vidInfo));
-                    });
-                    projects.forEach(vidInfo => {
-                        allCards.push(createCard(vidInfo));
-                    }); // Second set for seamless loop
-                    
-                    allCards.forEach(card => {
-                        track.appendChild(card);
-                    });
-                    
-                    // Calculate actual dimensions after DOM insertion
-                    setTimeout(() => {
-                        const firstCard = track.querySelector('.carousel-card');
-                        const cardWidth = firstCard.offsetWidth; // Should be 300px
-                        const cardMargin = 16; // 1rem = 16px margin-right
-                        const cardTotalWidth = cardWidth + cardMargin;
+                    for (let i = 0; i < projects.length; i++) {
+                        const element = projects[i];
+                        const item = document.createElement('div'); 
+                        item.className = 'carousel-item';
                         
-                        const singleSetWidth = cardTotalWidth * projects.length;
-                        
-                        // Set the CSS custom property
-                        document.documentElement.style.setProperty('--single-set-width', `${singleSetWidth}px`);
-                        
-                        // Also set it directly on the track for backup
-                        track.style.setProperty('--single-set-width', `${singleSetWidth}px`);
-                        
-                    }, 100);
-                    
-                    let isDragging = false;
-                    let startX = 0, currentX = 0;
-                    let dragOffset = 0, animationOffset = 0;
-                    
-                    function getAnimationProgress() {
-                        const computedStyle = window.getComputedStyle(track);
-                        const transform = computedStyle.transform;
-                        if (transform === 'none') return 0;
-                        
-                        const matrix = transform.match(/matrix\(([^)]+)\)/);
-                        if (matrix) {
-                            const values = matrix[1].split(', ');
-                            return parseFloat(values[4]) || 0;
-                        }
-                        return 0;
+                        const card = document.createElement('div'); 
+                        card.className = 'card';
+
+                        const videoPlaceholder = document.createElement('div');
+                        videoPlaceholder.className = 'video-placeholder';
+                        videoPlaceholder.setAttribute('data-src', element.videoId);
+                        videoPlaceholder.textContent = element.title;
+
+                        const cardBody = document.createElement('div'); 
+                        cardBody.className = 'card-body';
+
+                        const cardTitle = document.createElement('h5'); 
+                        cardTitle.className = 'card-title';
+                        cardTitle.innerHTML = element.title;
+
+                        const cardGroup = document.createElement('p');
+                        cardGroup.className = 'text-muted small';
+                        cardGroup.innerHTML = element.group;
+
+                        const cardDesc = document.createElement('p');
+                        cardDesc.className = 'card-text';
+                        cardDesc.innerHTML = element.description;
+
+                        const mt = document.createElement('div'); 
+                        mt.className = 'mt-auto';
+                        const techstack = document.createElement('div'); 
+                        techstack.className = 'tech-stack'; 
+                        techstack.innerHTML = element.tech;
+
+                        mt.appendChild(techstack);
+
+                        cardBody.appendChild(cardTitle);
+                        cardBody.appendChild(cardGroup);
+                        cardBody.appendChild(cardDesc);
+                        cardBody.appendChild(mt);
+
+                        card.appendChild(videoPlaceholder);
+                        card.appendChild(cardBody);
+
+                        item.appendChild(card);
+                        carouselContent.appendChild(item);
                     }
-                    
-                    container.addEventListener('mousedown', (e) => {
-                        isDragging = true;
-                        startX = e.clientX;
-                        currentX = e.clientX;
-                        container.classList.add('dragging');
-                        
-                        animationOffset = getAnimationProgress();
-                        
-                        track.style.animation = 'none';
-                        track.style.transform = `translateX(${animationOffset}px)`;
-                        
-                        dragOffset = 0;
-                        
-                        e.preventDefault();
-                    });
-                    
-                    document.addEventListener('mousemove', (e) => {
-                        if (!isDragging) return;
-                        
-                        currentX = e.clientX;
-                        const deltaX = currentX - startX;
-                        dragOffset = deltaX;
-                        
-                        track.style.transform = `translateX(${animationOffset + dragOffset}px)`;
-                        
-                        e.preventDefault();
-                    });
-                    
-                    document.addEventListener('mouseup', () => {
-                        if (!isDragging) return;
-                        
-                        isDragging = false;
-                        container.classList.remove('dragging');
-                        
-                        const currentOffset = animationOffset + dragOffset;
-                        
-                        // Get the actual single set width from CSS property
-                        const singleSetWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--single-set-width')) || 1264;
-                        
-                        // Normalize the offset to ensure smooth looping
-                        let normalizedOffset = currentOffset % singleSetWidth;
-                        if (normalizedOffset > 0) normalizedOffset -= singleSetWidth;
-                        
-                        track.style.animation = 'none';
-                        track.style.transform = `translateX(${normalizedOffset}px)`;
-                        
-                        // Force reflow
-                        track.offsetHeight;
-                        
-                        // Restart animation with proper timing
-                        track.style.animation = 'scroll-left 20s linear infinite';
-                        track.style.animationDelay = `${(normalizedOffset / singleSetWidth) * 20}s`;
-                        
-                        dragOffset = 0;
-                        animationOffset = 0;
-                    });
-                    
-                    container.addEventListener('dragstart', (e) => {
-                        e.preventDefault();
-                    });
                 }
 
-                initializeCarousel()
+                $(document).ready(function() {
+                    createCarouselItems();
+                    
+                    requestAnimationFrame(function() {
+                        // Bounds
+                        let boundItems = () => {
+                            let outer = container.getBoundingClientRect()
+                            let inner = content.getBoundingClientRect()
 
+                            if (parseInt(content.style.left) > 0) {
+                                content.style.left = '0px'
+                            }
+
+                            if (inner.right < outer.right) {
+                                content.style.left = `-${inner.width-outer.width}px`
+                            }
+                        }
+
+                        // Events
+                        container.addEventListener('mousedown', (e) => {
+                            pressed = true
+                            startX = e.offsetX-content.offsetLeft;
+                            container.style.cursor = 'grabbing'
+                        })
+
+                        container.addEventListener('mouseenter', () => {
+                            container.style.cursor = 'grab'
+                        })
+
+                        container.addEventListener('mouseup', () => {
+                            container.style.cursor = 'grab'
+                            pressed = false
+                        })
+
+                        container.addEventListener('mousemove', (e) => {
+                            if (!pressed) return;
+                            e.preventDefault()
+
+                            x = e.offsetX
+                            content.style.left = `${x-startX}px`
+                            boundItems()
+                        })
+                    });
+                });
+                
                 // Visibility
                 document.getElementById('site-content').style = `display: inherit;`
                 document.getElementById('boot-screen').style = `display: none;`
