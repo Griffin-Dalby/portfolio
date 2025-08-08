@@ -17,6 +17,21 @@ h1 {
     font-size: 4em;
 }
 
+// Color Themes
+.a-wasteland-shift { color: #af7427; }
+.sawdust { color: #128d1c; }
+
+.rustborn-works { 
+    background: -webkit-linear-gradient(#e98c12, #702400);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    &:hover {
+        box-shadow: rgba($color: #7c4b00, $alpha: 0.75) !important;
+    }
+}
+
 // Cards
 $desktop-card-size: 992px;
 $tablet-card-size: 768px;
@@ -123,6 +138,20 @@ $card-breakpoints: (
                 
                 &:hover {
                     transform: scale(1.05);
+                    text-shadow: 0 2px 8px rgba(255,255,255,0.3);
+                }
+            }
+
+            h3 {
+                font-size: .85rem;
+                font-weight: 100;
+                margin-top: -.5rem;
+
+                text-shadow: 0 2px 8px rgba(255,255,255, .1);
+
+                transition: all 0.2s ease;
+                &:hover {
+                    transform: scale(1.025);
                     text-shadow: 0 2px 8px rgba(255,255,255,0.3);
                 }
             }

@@ -14,6 +14,24 @@ h1 {
   font-size: 4em;
 }
 
+.a-wasteland-shift {
+  color: #af7427;
+}
+
+.sawdust {
+  color: #128d1c;
+}
+
+.rustborn-works {
+  background: -webkit-linear-gradient(#e98c12, #702400);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.rustborn-works:hover {
+  box-shadow: rgba(124, 75, 0, 0.75) !important;
+}
+
 #examples {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 45vw, 500px), 1fr));
@@ -102,6 +120,17 @@ h1 {
 }
 #examples .example-card .card-body h2:hover {
   transform: scale(1.05);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+#examples .example-card .card-body h3 {
+  font-size: 0.85rem;
+  font-weight: 100;
+  margin-top: -0.5rem;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+#examples .example-card .card-body h3:hover {
+  transform: scale(1.025);
   text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
 }
 #examples .example-card .previews {
