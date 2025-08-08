@@ -1,0 +1,184 @@
+@font-face {
+  font-family: "JetBrains Mono Bold";
+  src: url("../assets/fonts/ttf/JetBrainsMono-Bold.ttf");
+}
+@font-face {
+  font-family: "JetBrains Mono ExtraBold";
+  src: url("../assets/fonts/ttf/JetBrainsMono-ExtraBold.ttf");
+}
+h1, h2, h3 {
+  font-family: "JetBrains Mono Bold", sans-serif;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+#examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 45vw, 500px), 1fr));
+  gap: 24px;
+  align-items: start;
+  padding: 0 24px;
+}
+#examples .example-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #222;
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 380px;
+  transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: transform, box-shadow, border-radius, padding, background-color;
+}
+#examples .example-card .previews {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #444;
+  margin-bottom: 14px;
+  transition: all 0.3s ease;
+}
+#examples .example-card .previews .last-image, #examples .example-card .previews .next-image {
+  font-family: "JetBrains Mono Bold", sans-serif;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: none;
+  font-size: 1.25rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  transition: all 0.2s ease;
+}
+#examples .example-card .previews .last-image:hover, #examples .example-card .previews .next-image:hover {
+  background: #333 !important;
+  transform: translateY(-50%) scale(1.2) !important;
+  color: #fff;
+}
+#examples .example-card .previews .last-image {
+  left: 12px;
+}
+#examples .example-card .previews .next-image {
+  right: 12px;
+}
+#examples .example-card .previews:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+#examples .example-card .previews:hover .last-image, #examples .example-card .previews:hover .next-image {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+#examples .example-card .card-body {
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+#examples .example-card .card-body:hover {
+  transform: translateY(-2px);
+  padding: 4px 12px;
+}
+#examples .example-card .card-body p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: all 0.15s ease;
+}
+#examples .example-card .card-body p:hover {
+  transform: translateX(4px);
+  color: #fff;
+}
+#examples .example-card .card-body h2 {
+  font-size: 1.25rem;
+  margin: 0;
+  transition: all 0.2s ease;
+}
+#examples .example-card .card-body h2:hover {
+  transform: scale(1.05);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+#examples .example-card .previews {
+  transition: all 0.3s ease;
+}
+#examples .example-card .previews .slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+#examples .example-card .previews .slides img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  flex-shrink: 0;
+}
+#examples .example-card .previews:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+#examples .example-card .previews:hover .last-image, #examples .example-card .previews:hover .next-image {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+#examples .example-card .previews .last-image, #examples .example-card .previews .next-image {
+  transition: all 0.2s ease;
+}
+#examples .example-card .previews .last-image:hover, #examples .example-card .previews .next-image:hover {
+  background: #333 !important;
+  transform: translateY(-50%) scale(1.2) !important;
+  color: #fff;
+}
+#examples .example-card .card-actions {
+  transition: all 0.2s ease;
+}
+#examples .example-card .card-actions:hover {
+  transform: translateY(-1px);
+}
+#examples .example-card .card-actions .btn {
+  color: #fff;
+  background-color: #333;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+#examples .example-card .card-actions .btn:hover {
+  font-weight: 900;
+  transform: translateY(-2px) scale(1.05);
+  background-color: #444;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+#examples .example-card .card-actions .ghost {
+  color: #aaa;
+  background-color: #2a2a2a;
+  font-weight: 200;
+}
+#examples .example-card h2 {
+  margin-top: 10px;
+}
+#examples .example-card h2, #examples .example-card h3 {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+#examples .example-card h3 {
+  font-size: 0.85em;
+}
+@media (hover: none) {
+  #examples .example-card:active {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  }
+}
+#examples .example-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  padding: 1em 1em 1em 1em;
+  background-color: #2a2a2a;
+}/*# sourceMappingURL=projects.css.map */

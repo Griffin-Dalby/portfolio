@@ -167,28 +167,10 @@ typeNextLine('boot-text', moduleLines).then(()=>{
                 heroLeft.appendChild(desc1)
                 heroLeft.appendChild(desc2)
 
-                function loadVideosAfterAnimation() {
-                    const placeholders = document.querySelectorAll('.video-placeholder');
-                    placeholders.forEach(placeholder => {
-                        const video = document.createElement('video');
-                        video.className = 'card-img-top'
-                        video.src = `./assets/vids/hero/${placeholder.dataset.src}.mp4`;
-                        video.preload = 'metadata';
-                        video.autoplay = true
-                        video.muted = true;
-                        video.loop = true;
-                        placeholder.replaceWith(video);
-                    });
-                    
-                    document.getElementById('projects-hr').style = 'display: block;'
-                    document.getElementById('projects').style    = 'display: block;'
-                }
-
                 typeWriter(myName, heroLines[0], 0, 20)
                     .then(() => typeWriterWords(mySkills, heroLines[1], 0, 20))
                     .then(() => typeWriterWords(desc1, heroLines[2], 0, 10))
                     .then(() => typeWriterWords(desc2, heroLines[3], 0, 10))
-                    .finally(loadVideosAfterAnimation)
                     
                 const pre = document.createElement('pre')
                 const code = document.createElement('code')
@@ -215,7 +197,7 @@ typeNextLine('boot-text', moduleLines).then(()=>{
 
                         switch (element.textContent) {
                             case " projects ":
-                                element.replaceWith(makeA('#', ' projects '))
+                                element.replaceWith(makeA('./pages/projects.html', ' projects '))
                                 break;
 
                             case " services ":
@@ -235,141 +217,6 @@ typeNextLine('boot-text', moduleLines).then(()=>{
                         }
                     };
                 })
-
-                // Carousel
-                const projects = [
-                    {
-                        videoId: 'sidescroll',
-                        title: 'Anime Frontiers',
-                        group: 'Lost Hope Studios',
-                        description: 'Anime Tower Defense game w/ plenty of unique features to set it apart.',
-                        tech: 'LuaU, Efficient Server-Client Replication, Server Authorative'
-                    },
-                    {
-                        videoId: 'harvest',
-                        title: 'Harvest [Prototype]',
-                        group: 'Personal Project',
-                        description: 'Synced time across all servers w/ custom API for syncing, inverse kinematics for slicing, and procedually generated crops.',
-                        tech: 'LuaU, Backend/Fullstack Design (w/ Node.JS), Visual Procedual Generation, Inverse Kinematics'
-                    },
-                    {
-                        videoId: 'pistol',
-                        title: 'Pistols [Prototype]',
-                        group: 'Personal Project',
-                        description: 'Took advantage of Inverse Kinematics & CFrame Animation for procedually generated animations alongside fixed VFX & SFX w/ a combat system.',
-                        tech: 'LuaU, Inverse Kinematics & CFrame Animation, Shooter'
-                    },
-                    {
-                        videoId: 'mana',
-                        title: 'Mana [Prototype]',
-                        group: 'Personal Project',
-                        description: 'Magical fantasy game where you can gain new abilities and take them onto the battlefield to fight until last player standing.',
-                        tech: 'LuaU, Combat & Rounds systems, VFX'
-                    }
-                ];
-
-                const container = document.querySelector('.carousel-wrapper')
-                const content   = document.querySelector('#carousel-content')
-
-                let pressed = false;
-                let startX, x
-
-                function createCarouselItems() {
-                    const carouselContent = document.getElementById('carousel-content');
-                    
-                    for (let i = 0; i < projects.length; i++) {
-                        const element = projects[i];
-                        const item = document.createElement('div'); 
-                        item.className = 'carousel-item';
-                        
-                        const card = document.createElement('div'); 
-                        card.className = 'card';
-
-                        const videoPlaceholder = document.createElement('div');
-                        videoPlaceholder.className = 'video-placeholder';
-                        videoPlaceholder.setAttribute('data-src', element.videoId);
-                        videoPlaceholder.textContent = element.title;
-
-                        const cardBody = document.createElement('div'); 
-                        cardBody.className = 'card-body';
-
-                        const cardTitle = document.createElement('h5'); 
-                        cardTitle.className = 'card-title';
-                        cardTitle.innerHTML = element.title;
-
-                        const cardGroup = document.createElement('p');
-                        cardGroup.className = 'text-muted small';
-                        cardGroup.innerHTML = element.group;
-
-                        const cardDesc = document.createElement('p');
-                        cardDesc.className = 'card-text';
-                        cardDesc.innerHTML = element.description;
-
-                        const mt = document.createElement('div'); 
-                        mt.className = 'mt-auto';
-                        const techstack = document.createElement('div'); 
-                        techstack.className = 'tech-stack'; 
-                        techstack.innerHTML = element.tech;
-
-                        mt.appendChild(techstack);
-
-                        cardBody.appendChild(cardTitle);
-                        cardBody.appendChild(cardGroup);
-                        cardBody.appendChild(cardDesc);
-                        cardBody.appendChild(mt);
-
-                        card.appendChild(videoPlaceholder);
-                        card.appendChild(cardBody);
-
-                        item.appendChild(card);
-                        carouselContent.appendChild(item);
-                    }
-                }
-
-                $(document).ready(function() {
-                    createCarouselItems();
-                    
-                    requestAnimationFrame(function() {
-                        // Bounds
-                        let boundItems = () => {
-                            let outer = container.getBoundingClientRect()
-                            let inner = content.getBoundingClientRect()
-
-                            if (parseInt(content.style.left) > 0) {
-                                content.style.left = '0px'
-                            }
-
-                            if (inner.right < outer.right) {
-                                content.style.left = `-${inner.width-outer.width}px`
-                            }
-                        }
-
-                        // Events
-                        container.addEventListener('mousedown', (e) => {
-                            pressed = true
-                            startX = e.offsetX-content.offsetLeft;
-                            container.style.cursor = 'grabbing'
-                        })
-
-                        container.addEventListener('mouseenter', () => {
-                            container.style.cursor = 'grab'
-                        })
-
-                        container.addEventListener('mouseup', () => {
-                            container.style.cursor = 'grab'
-                            pressed = false
-                        })
-
-                        container.addEventListener('mousemove', (e) => {
-                            if (!pressed) return;
-                            e.preventDefault()
-
-                            x = e.offsetX
-                            content.style.left = `${x-startX}px`
-                            boundItems()
-                        })
-                    });
-                });
                 
                 // Visibility
                 document.getElementById('site-content').style = `display: inherit;`
