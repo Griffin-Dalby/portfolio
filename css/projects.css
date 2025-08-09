@@ -18,8 +18,19 @@ h1 {
   color: #af7427;
 }
 
+.anime-frontiers {
+  color: #d828a3;
+}
+
 .sawdust {
   color: #128d1c;
+}
+
+.lost-hope-studios {
+  background: -webkit-linear-gradient(#fff, rgba(68, 68, 68, 0.4509803922));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .rustborn-works {

@@ -19,7 +19,15 @@ h1 {
 
 // Color Themes
 .a-wasteland-shift { color: #af7427; }
+.anime-frontiers { color: #d828a3; }
 .sawdust { color: #128d1c; }
+
+.lost-hope-studios {
+    background: -webkit-linear-gradient(#fff, #44444473);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 .rustborn-works { 
     background: -webkit-linear-gradient(#e98c12, #702400);
