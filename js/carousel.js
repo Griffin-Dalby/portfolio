@@ -5,14 +5,16 @@ document.querySelectorAll('.example-card').forEach(card => {
 
   const update = () => slides.style.transform = `translateX(-${idx * 100}%)`;
 
-  card.querySelector('.next-image').addEventListener('click', () => {
-    idx = (idx + 1) % imgs.length;
-    update();
-  });
-  card.querySelector('.last-image').addEventListener('click', () => {
-    idx = (idx - 1 + imgs.length) % imgs.length;
-    update();
-  });
+  if (card.querySelector('.next-image')) {
+    card.querySelector('.next-image').addEventListener('click', () => {
+      idx = (idx + 1) % imgs.length;
+      update();
+    });
+    card.querySelector('.last-image').addEventListener('click', () => {
+      idx = (idx - 1 + imgs.length) % imgs.length;
+      update();
+    });
+  }
 
   // keyboard support when preview receives focus
   card.querySelector('.previews').addEventListener('keydown', (e) => {

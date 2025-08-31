@@ -26,6 +26,13 @@ h1 {
   color: #128d1c !important;
 }
 
+.skate {
+  background: -webkit-linear-gradient(#EFBF04, #4169e1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .lost-hope-studios {
   background: -webkit-linear-gradient(#fff, rgba(68, 68, 68, 0.4509803922));
   background-clip: text;
