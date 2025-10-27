@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "JetBrains Mono Bold";
+  src: url("../assets/fonts/ttf/JetBrainsMono-Bold.ttf");
+}
+@font-face {
+  font-family: "JetBrains Mono ExtraBold";
+  src: url("../assets/fonts/ttf/JetBrainsMono-ExtraBold.ttf");
+}
+h1, h2, h3 {
+  font-family: "JetBrains Mono Bold", sans-serif;
+}
+
+h1 {
+  font-size: 4em;
+}/*# sourceMappingURL=blog.css.map */

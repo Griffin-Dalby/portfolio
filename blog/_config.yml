@@ -1,0 +1,5 @@
+title: "Griffin’s Blog"
+description: "Thoughts, dev logs, and creative notes"
+baseurl: "/portfolio/blog"
+permalink: /:year/:month/:day/:title
+theme: minima

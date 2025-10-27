@@ -70,6 +70,7 @@ const heroWebCode = [
     () => `local portfolio = require(script.portfolio)\n\nlocal portfolioController = portfolio.new()\nportfolioController:render()`,
     () => ``,
     () => `local projects = portfolioController:getPage('projects') --> Click me!`,
+    () => `local blog = portfolioController:getPage('blog')`,
     () => `local services = portfolioController:getPage('services')`,
     () => `local aboutMe = portfolioController:getPage('aboutMe')`,
     () => `local contactMe = portfolioController:getPage('contactMe')`,
@@ -211,6 +212,10 @@ typeNextLine('boot-text', moduleLines).then(()=>{
                         switch (element.textContent) {
                             case " projects ":
                                 element.replaceWith(makeA('./pages/projects.html', ' projects '))
+                                break;
+
+                            case " blog ":
+                                element.replaceWith(makeA('./blog/index.html', ' blog '))
                                 break;
 
                             case " services ":
