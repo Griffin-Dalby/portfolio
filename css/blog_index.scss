@@ -1,0 +1,88 @@
+// Fonts
+@font-face {
+    font-family: 'JetBrains Mono Medium';
+    src: url('../assets/fonts/ttf/JetBrainsMono-Light.ttf');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono Bold';
+    src: url('../assets/fonts/ttf/JetBrainsMono-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono ExtraBold';
+    src: url('../assets/fonts/ttf/JetBrainsMono-ExtraBold.ttf');
+}
+
+
+:root {
+  --link-color: #01ff70;
+  --link-hover-color: #2ecc40;
+}
+
+html,
+body {
+  background-color: #151515;
+  min-height: 100%;
+  margin: 0%
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  color: #fafafa;
+  line-height: 1.45;
+  margin: 6rem auto 1rem;
+  max-width: 85%;
+  padding: .25rem;
+}
+
+article {
+  margin-bottom: 1em;
+}
+
+.blog-nav {
+    a {
+        font-family: 'JetBrains Mono Bold', sans-serif;
+        padding-right: 1.5em;
+
+        color: #3911ee;
+        text-decoration: underline;
+    }
+}
+
+h1 {
+  font-family: 'JetBrains Mono ExtraBold', sans-serif;
+  font-size: 3em;
+}
+h2 {
+  font-family: 'JetBrains Mono ExtraBold', sans-serif;
+}
+
+.post-container {
+  max-width: 40em;
+  background-color: #141414;
+  padding: .5em .55em .5em .75em;
+  border-radius: .5em;
+
+  h2 {
+    margin-top: .15em;
+    margin-bottom: 0px;
+
+    a {
+        color: #3911ee;
+        text-decoration: underline;
+    }
+  }
+
+  time {
+    font-family: 'JetBrains Mono Bold', sans-serif;
+  }
+
+  p {
+    font-family: 'JetBrains Mono Medium', sans-serif;
+    font-size: 1em;
+  }
+}

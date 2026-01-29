@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Replicated Football Physics",
+        "file": "custom-football-physics",
+        "date": "2026-01-29",
+        "description": "Deep dive on how I created fully a real-time, low latency replicated soccer physics simulation."
+    },
+    {
+        "title": "Entities that Learn",
+        "file": "learning-entities",
+        "date": "2026-01-29",
+        "description": "My take on entities that adapt to player behavior, and how I implemented it."
+    }
+]

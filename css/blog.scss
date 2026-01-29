@@ -1,5 +1,15 @@
 // Fonts
 @font-face {
+    font-family: 'JetBrains Mono Light';
+    src: url('../assets/fonts/ttf/JetBrainsMono-Light.ttf');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono Medium';
+    src: url('../assets/fonts/ttf/JetBrainsMono-Light.ttf');
+}
+
+@font-face {
     font-family: 'JetBrains Mono Bold';
     src: url('../assets/fonts/ttf/JetBrainsMono-Bold.ttf');
 }
@@ -9,10 +19,95 @@
     src: url('../assets/fonts/ttf/JetBrainsMono-ExtraBold.ttf');
 }
 
-h1, h2, h3 {
-    font-family: 'JetBrains Mono Bold', sans-serif;
+
+:root {
+  --link-color: #01ff70;
+  --link-hover-color: #2ecc40;
+}
+
+html,
+body {
+  background-color: #151515;
+  min-height: 100%;
+  margin: 0%
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  color: #fafafa;
+  line-height: 1.45;
+  margin: 6rem auto 1rem;
+  max-width: 85%;
+  padding: .25rem;
+}
+
+p {
+  font-family: 'JetBrains Mono Medium', sans-serif;
+}
+
+li {
+   font-family: 'Jetbrains Mono Light', sans-serif;
 }
 
 h1 {
-    font-size: 4em;
+    margin-bottom: 0px;
 }
+h1, h2, h3, time {
+  font-family: 'JetBrains Mono ExtraBold', sans-serif;
+}
+
+pre {
+  background-color: #151515;
+}
+
+blockquote {
+  border-left: 3px solid var(--link-color);
+  padding-left: 1rem;
+}
+
+.blog-nav {
+    a {
+        font-family: 'JetBrains Mono Bold', sans-serif;
+        padding-right: 1.5em;
+
+        color: #3911ee;
+        text-decoration: underline;
+    }
+}
+
+// .post-container {
+//     background-color: #222;
+//     padding-left: .25em;
+//     padding-right: .25em;
+//     padding-top: .05em;
+//     padding-bottom: .05em;
+
+//     .post-header {
+//         background-color: #333;
+
+//         h1 {
+//             font-size: 2.5em
+//         }
+
+//         .post-date {
+//             color: #fff;
+//         }
+//     }
+
+//     .post-content {
+
+//         ul {
+//             li {
+//                 ::marker {
+//                     color: #fff;
+//                     font-size: 1.5em
+//                 }
+
+//                 color: #fff;
+//             }
+//         }
+//     }
+// }

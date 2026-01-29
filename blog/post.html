@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Blog Post - Griffin Dalby</title>
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body style="background-color: #151515;">
+        <nav class="blog-nav">
+            <a href="/blog/index.html" class="back-link">← Back to Blog</a>
+            <a href="/" class="home-link">Home</a>
+        </nav>
+
+        <article class="post-container">
+            <header class="post-header">
+                <h1 id="post-title"></h1>
+                <time id="post-date"></time>
+            </header>
+            
+            <div id="post-content" class="markdown-content"></div>
+        </article>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search)
+        const postFile = params.get('file')
+
+        if (!postFile) {
+            window.location.href = '/blog/index.html'
+        }
+
+        async function loadPost() {
+            try {
+                const response = await fetch(`posts/${postFile}.md`)
+                if (!response.ok) throw new Error('Post not found')
+                
+                const markdown = await response.text()
+                const rawHtml = marked.parse(markdown)
+                const sanitizedHtml = DOMPurify.sanitize(rawHtml)
+                
+                document.getElementById('post-content').innerHTML = sanitizedHtml
+                
+                const firstHeading = document.querySelector('#post-content h1')
+                if (firstHeading) {
+                    const title = firstHeading.textContent
+                    document.getElementById('post-title').textContent = title
+                    document.getElementById('page-title').textContent = `${title} - Griffin Dalby`
+                    firstHeading.remove()
+                }
+                
+                await loadPostMetadata()
+                
+            } catch (error) {
+                document.getElementById('post-content').innerHTML = 
+                    `<p class="error">Failed to load post: ${error.message}</p>`
+            }
+        }
+
+        async function loadPostMetadata() {
+            try {
+                const response = await fetch('posts.json')
+                const posts = await response.json()
+                const currentPost = posts.find(p => p.file === postFile)
+                
+                if (currentPost) {
+                    const dateElement = document.getElementById('post-date')
+                    dateElement.textContent = `${currentPost.date} • Griffin Dalby`
+                }
+            } catch (error) {
+                console.error('Failed to load metadata:', error)
+            }
+        }
+
+        loadPost()
+    </script>
+</body>
+</html>

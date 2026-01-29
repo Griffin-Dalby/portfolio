@@ -207,7 +207,7 @@ typeNextLine('boot-text', moduleLines).then(()=>{
                                 break;
 
                             case " blog ":
-                                element.replaceWith(makeA('./blog/', ' blog '))
+                                element.replaceWith(makeA('./blog/index.html', ' blog '))
                                 break;
 
                             case " services ":
