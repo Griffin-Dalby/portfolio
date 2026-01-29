@@ -8,8 +8,8 @@
 </head>
 <body style="background-color: #151515;">
         <nav class="blog-nav">
-            <a href="/blog/index.html" class="back-link">← Back to Blog</a>
-            <a href="/" class="home-link">Home</a>
+            <a href="/portfolio/blog/" class="back-link">← Back to Blog</a>
+            <a href="/portfolio/" class="home-link">Home</a>
         </nav>
 
         <article class="post-container">
@@ -29,7 +29,7 @@
         const postFile = params.get('file')
 
         if (!postFile) {
-            window.location.href = '/blog/index.html'
+            window.location.href = '/portfolio/blog/'
         }
 
         async function loadPost() {
