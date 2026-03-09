@@ -26,11 +26,12 @@ h1 {
   color: #128d1c !important;
 }
 
-.skate {
-  background: -webkit-linear-gradient(#EFBF04, #4169e1) !important;
-  background-clip: text !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+.gonjiam {
+  color: #9a9a9a !important;
+}
+
+.brainrot-soccer {
+  color: #54a35b !important;
 }
 
 .lost-hope-studios {
@@ -50,33 +51,26 @@ h1 {
   box-shadow: rgba(124, 75, 0, 0.75) !important;
 }
 
-#examples {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 45vw, 500px), 1fr));
-  gap: 24px;
-  align-items: start;
-  padding: 0 24px;
+.vision-studios {
+  background: -webkit-linear-gradient(#242424, #aaa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-#examples .example-card {
-  display: flex;
-  flex-direction: column;
-  background-color: #222;
-  border-radius: 12px;
-  padding: 16px;
-  min-height: 380px;
-  transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
-  will-change: transform, box-shadow, border-radius, padding, background-color;
+.vision-studios:hover {
+  box-shadow: rgba(255, 255, 255, 0.75) !important;
 }
-#examples .example-card .previews {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #444;
-  margin-bottom: 14px;
-  transition: all 0.3s ease;
+
+.costly-sports {
+  background: -webkit-linear-gradient(#c6f7c2, #024908);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+.costly-sports:hover {
+  box-shadow: rgba(255, 255, 255, 0.75) !important;
+}
+
 #examples .example-card .previews .last-image, #examples .example-card .previews .next-image {
   font-family: "JetBrains Mono Bold", sans-serif;
   position: absolute;
@@ -102,6 +96,16 @@ h1 {
 }
 #examples .example-card .previews .next-image {
   right: 12px;
+}
+#examples .example-card .previews {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #444;
+  margin-bottom: 14px;
+  transition: all 0.3s ease;
 }
 #examples .example-card .previews:hover {
   transform: scale(1.02);
@@ -216,6 +220,16 @@ h1 {
 #examples .example-card h3 {
   font-size: 0.85em;
 }
+#examples .example-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #222;
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 380px;
+  transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: transform, box-shadow, border-radius, padding, background-color;
+}
 @media (hover: none) {
   #examples .example-card:active {
     transform: translateY(-3px) scale(1.01);
@@ -228,4 +242,11 @@ h1 {
   border-radius: 8px;
   padding: 1em 1em 1em 1em;
   background-color: #2a2a2a;
+}
+#examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 45vw, 500px), 1fr));
+  gap: 24px;
+  align-items: start;
+  padding: 0 24px;
 }/*# sourceMappingURL=projects.css.map */

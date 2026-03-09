@@ -21,12 +21,8 @@ h1 {
 .a-wasteland-shift { color: #af7427 !important; }
 .anime-frontiers { color: #d828a3 !important; }
 .sawdust { color: #128d1c !important; }
-.skate { 
-    background: -webkit-linear-gradient(#EFBF04, #4169e1) !important;
-    background-clip: text !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-}
+.gonjiam { color: #9a9a9a !important; }
+.brainrot-soccer { color: #54a35b !important; }
 
 .lost-hope-studios {
     background: -webkit-linear-gradient(#fff, #44444473);
@@ -43,6 +39,28 @@ h1 {
 
     &:hover {
         box-shadow: rgba($color: #7c4b00, $alpha: 0.75) !important;
+    }
+}
+
+.vision-studios {
+    background: -webkit-linear-gradient(#242424, #aaa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    &:hover {
+        box-shadow: rgba($color: #fff, $alpha: 0.75) !important;
+    }
+}
+
+.costly-sports {
+    background: -webkit-linear-gradient(#c6f7c2, #024908);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    &:hover {
+        box-shadow: rgba($color: #fff, $alpha: 0.75) !important;
     }
 }
 

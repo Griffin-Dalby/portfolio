@@ -7,6 +7,16 @@
     opacity: 0;
   }
 }
+#boot-screen #boot-text {
+  color: #ffffff;
+  font-family: "JetBrains Mono", sans-serif;
+  transition: opacity 1s ease;
+  font-size: 0.8rem;
+}
+#boot-screen #boot-text::after {
+  content: "_";
+  animation: blink 1s step-end infinite;
+}
 #boot-screen {
   position: fixed;
   top: 0;
@@ -18,14 +28,4 @@
   z-index: 1000;
   display: flex;
   align-items: center;
-}
-#boot-screen #boot-text {
-  color: #ffffff;
-  font-family: "JetBrains Mono", sans-serif;
-  transition: opacity 1s ease;
-  font-size: 0.8rem;
-}
-#boot-screen #boot-text::after {
-  content: "_";
-  animation: blink 1s step-end infinite;
 }/*# sourceMappingURL=bootscreen.css.map */
