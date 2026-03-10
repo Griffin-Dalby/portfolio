@@ -70,10 +70,21 @@ blockquote {
   text-decoration: underline;
 }
 
+@media (max-width: 1124px) {
+  #site-content > div {
+    flex-direction: column;
+  }
+  #site-content pre {
+    flex: unset !important;
+    width: 100%;
+  }
+}
 #actions {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 #actions #start-project {
   margin-top: 2em;
