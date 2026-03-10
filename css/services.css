@@ -21,7 +21,7 @@
 
 html,
 body {
-  background-color: #151515;
+  background-color: #000;
   min-height: 100%;
   margin: 0%;
 }
@@ -68,4 +68,22 @@ blockquote {
   padding-right: 1.5em;
   color: #3911ee;
   text-decoration: underline;
-}/*# sourceMappingURL=blog.css.map */
+}
+
+#actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#actions #start-project {
+  margin-top: 2em;
+  background-color: #A0D585;
+  border-radius: 6px;
+  border-style: none;
+  outline-style: solid;
+  outline-width: 2px;
+  outline-color: #EEFABD;
+  font-family: "JetBrains Momo Bold", sans-serif;
+  font-weight: 900;
+  font-size: 2em;
+}/*# sourceMappingURL=services.css.map */

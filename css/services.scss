@@ -27,7 +27,7 @@
 
 html,
 body {
-  background-color: #151515;
+  background-color: #000;
   min-height: 100%;
   margin: 0%
 }
@@ -69,45 +69,33 @@ blockquote {
 }
 
 .blog-nav {
-    a {
-        font-family: 'JetBrains Mono Bold', sans-serif;
-        padding-right: 1.5em;
+  a {
+      font-family: 'JetBrains Mono Bold', sans-serif;
+      padding-right: 1.5em;
 
-        color: #3911ee;
-        text-decoration: underline;
-    }
+      color: #3911ee;
+      text-decoration: underline;
+  }
 }
 
-// .post-container {
-//     background-color: #222;
-//     padding-left: .25em;
-//     padding-right: .25em;
-//     padding-top: .05em;
-//     padding-bottom: .05em;
+#actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-//     .post-header {
-//         background-color: #333;
+  #start-project {
+    margin-top: 2em;
 
-//         h1 {
-//             font-size: 2.5em
-//         }
+    background-color: #A0D585;
+    border-radius: 6px;
 
-//         .post-date {
-//             color: #fff;
-//         }
-//     }
+    border-style: none;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: #EEFABD;
 
-//     .post-content {
-
-//         ul {
-//             li {
-//                 ::marker {
-//                     color: #fff;
-//                     font-size: 1.5em
-//                 }
-
-//                 color: #fff;
-//             }
-//         }
-//     }
-// }
+    font-family: 'JetBrains Momo Bold', sans-serif;
+    font-weight: 900;
+    font-size: 2em;
+  }
+}

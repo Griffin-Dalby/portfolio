@@ -70,7 +70,6 @@ const heroWebCode = [
     () => `local portfolio = require(script.portfolio)\n\nlocal portfolioController = portfolio.new()\nportfolioController:render()`,
     () => ``,
     () => `local projects = portfolioController:getPage('projects') --> Click me!`,
-    () => `local blog = portfolioController:getPage('blog')`,
     () => `local services = portfolioController:getPage('services')`,
     () => `local aboutMe = portfolioController:getPage('aboutMe')`,
     () => `local contactMe = portfolioController:getPage('contactMe')`,
@@ -109,8 +108,8 @@ const heroCode = [
     () => ``,
     () => `function Griffin:WorkingOn()`,
     () => `     return {`,
-    () => `         'Horror Game?    - [???] Studio',`,
-    () => `         'Sports Game?    - [???] Studio'`,
+    () => `         'Gonjiam: Haunted Asylum - Vision Studios',`,
+    () => `         'Brainrot Soccer - Costly Sports',`,
     () => `         'Sawdust Library - Passion Project',`,
     () => `     }`,
     () => `end`,
@@ -206,12 +205,8 @@ typeNextLine('boot-text', moduleLines).then(()=>{
                                 element.replaceWith(makeA('./pages/projects.html', ' projects '))
                                 break;
 
-                            case " blog ":
-                                element.replaceWith(makeA('./blog/index.html', ' blog '))
-                                break;
-
                             case " services ":
-                                element.replaceWith(makeA('#', ' services '))
+                                element.replaceWith(makeA('./pages/services.html', ' services '))
                                 break;
                         
                             case " aboutMe ":
