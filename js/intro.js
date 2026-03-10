@@ -71,8 +71,8 @@ const heroWebCode = [
     () => ``,
     () => `local projects = portfolioController:getPage('projects') --> Click me!`,
     () => `local services = portfolioController:getPage('services')`,
-    () => `local aboutMe = portfolioController:getPage('aboutMe')`,
-    () => `local contactMe = portfolioController:getPage('contactMe')`,
+    () => `-- local aboutMe = portfolioController:getPage('aboutMe') Being worked on...`,
+    () => `-- local contactMe = portfolioController:getPage('contactMe') Being worked on...`,
 ].flat()
  
 const heroCode = [
