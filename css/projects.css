@@ -131,18 +131,10 @@ h1 {
   line-height: 1.5;
   transition: all 0.15s ease;
 }
-#examples .example-card .card-body p:hover {
-  transform: translateX(4px);
-  color: #fff;
-}
 #examples .example-card .card-body h2 {
   font-size: 1.25rem;
   margin: 0;
   transition: all 0.2s ease;
-}
-#examples .example-card .card-body h2:hover {
-  transform: scale(1.05);
-  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
 }
 #examples .example-card .card-body h3 {
   font-size: 0.85rem;
@@ -150,10 +142,6 @@ h1 {
   margin-top: -0.5rem;
   text-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
   transition: all 0.2s ease;
-}
-#examples .example-card .card-body h3:hover {
-  transform: scale(1.025);
-  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
 }
 #examples .example-card .previews {
   transition: all 0.3s ease;
@@ -189,9 +177,6 @@ h1 {
 }
 #examples .example-card .card-actions {
   transition: all 0.2s ease;
-}
-#examples .example-card .card-actions:hover {
-  transform: translateY(-1px);
 }
 #examples .example-card .card-actions .btn {
   color: #fff;

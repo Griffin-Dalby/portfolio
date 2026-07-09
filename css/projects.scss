@@ -157,10 +157,10 @@ $card-breakpoints: (
                 line-height: 1.5;
                 transition: all 0.15s ease;
                 
-                &:hover {
-                    transform: translateX(4px);
-                    color: #fff;
-                }
+                // &:hover {
+                //     transform: translateX(4px);
+                //     color: #fff;
+                // }
             }
 
             h2 {
@@ -168,10 +168,10 @@ $card-breakpoints: (
                 margin: 0;
                 transition: all 0.2s ease;
                 
-                &:hover {
-                    transform: scale(1.05);
-                    text-shadow: 0 2px 8px rgba(255,255,255,0.3);
-                }
+                // &:hover {
+                //     transform: scale(1.05);
+                //     text-shadow: 0 2px 8px rgba(255,255,255,0.3);
+                // }
             }
 
             h3 {
@@ -182,10 +182,10 @@ $card-breakpoints: (
                 text-shadow: 0 2px 8px rgba(255,255,255, .1);
 
                 transition: all 0.2s ease;
-                &:hover {
-                    transform: scale(1.025);
-                    text-shadow: 0 2px 8px rgba(255,255,255,0.3);
-                }
+                // &:hover {
+                //     transform: scale(1.025);
+                //     text-shadow: 0 2px 8px rgba(255,255,255,0.3);
+                // }
             }
         }
 
@@ -230,9 +230,9 @@ $card-breakpoints: (
         .card-actions {
             transition: all 0.2s ease;
             
-            &:hover {
-                transform: translateY(-1px);
-            }
+            // &:hover {
+            //     transform: translateY(-1px);
+            // }
             
             .btn {
                 color: #fff;
