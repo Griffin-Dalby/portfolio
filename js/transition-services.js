@@ -33,9 +33,9 @@ const skills_lines = [
 ].flat()
 const pricing_lines = [
     () => "* PRICING *",
-    () => "I work on a paid per-milestone, or per-hour.",
+    () => "I typically work on a paid per-milestone, or per-hour basis.",
     () => "Milestone pricing depends on scope, with a minimum of $300.",
-    () => "Hourly rate starts at $30+, depending on project complexity.",
+    () => "Hourly rates start at $30+, depending on project complexity.",
     () => "",
     () => "* PROCESS *",
     () => "1. Discovery & Scope",
