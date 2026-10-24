@@ -234,4 +234,10 @@ h1 {
   gap: 24px;
   align-items: start;
   padding: 0 24px;
+}
+@media (max-width: 767.98px) {
+  #examples .example-card .card-body h2,
+  #examples .example-card .card-body h3 {
+    text-align: center;
+  }
 }/*# sourceMappingURL=projects.css.map */
