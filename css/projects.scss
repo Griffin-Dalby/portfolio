@@ -303,3 +303,15 @@ $card-breakpoints: (
     align-items: start;
     padding: 0 24px;
 }
+
+@media (max-width: 767.98px) {
+    #examples {
+        .example-card {
+            .card-body {
+                h2, h3 {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
