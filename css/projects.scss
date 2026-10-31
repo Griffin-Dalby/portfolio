@@ -23,6 +23,7 @@ h1 {
 .sawdust { color: #128d1c !important; }
 .gonjiam { color: #9a9a9a !important; }
 .brainrot-soccer { color: #54a35b !important; }
+.octane { color: #ed5942 !important; }
 
 .lost-hope-studios {
     background: -webkit-linear-gradient(#fff, #44444473);
@@ -55,6 +56,17 @@ h1 {
 
 .costly-sports {
     background: -webkit-linear-gradient(#c6f7c2, #024908);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    &:hover {
+        box-shadow: rgba($color: #fff, $alpha: 0.75) !important;
+    }
+}
+
+.ignition-switch {
+    background: -webkit-linear-gradient(#ed5942, #efb13d);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -178,6 +190,7 @@ $card-breakpoints: (
                 font-size: .85rem;
                 font-weight: 100;
                 margin-top: -.5rem;
+                margin-left: 0;
 
                 text-shadow: 0 2px 8px rgba(255,255,255, .1);
 
