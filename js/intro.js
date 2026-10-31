@@ -211,23 +211,62 @@ typeNextLine('boot-text', moduleLines).then(()=>{
                         return a
                     }
 
-                    for (let index = 0; index < elems.length; index++) {
-                        const element = elems.item(index);
+                    function makeLineClickable(element, href) {
+                        const codeElement = document.getElementById('hero-web-code')
+                        let lineContent = element
+
+                        while (lineContent.parentNode && lineContent.parentNode !== codeElement) {
+                            lineContent = lineContent.parentNode
+                        }
+                        if (lineContent.parentNode !== codeElement) return
+
+                        const siblings = Array.from(codeElement.childNodes)
+                        const lineIndex = siblings.indexOf(lineContent)
+                        let start = lineIndex
+                        let end = lineIndex
+
+                        while (start > 0) {
+                            const previous = siblings[start - 1]
+                            if (previous.nodeType === Node.TEXT_NODE && previous.textContent.includes('\n')) break
+                            start--
+                        }
+                        while (end + 1 < siblings.length) {
+                            const next = siblings[end + 1]
+                            if (next.nodeType === Node.TEXT_NODE && next.textContent.includes('\n')) break
+                            end++
+                        }
+
+                        const lineLink = document.createElement('a')
+                        lineLink.href = href
+                        lineLink.className = 'web-code-line'
+                        lineLink.style.color = 'inherit'
+                        lineLink.style.textDecoration = 'none'
+                        codeElement.insertBefore(lineLink, siblings[start])
+                        for (let index = start; index <= end; index++) {
+                            lineLink.appendChild(siblings[index])
+                        }
+                    }
+
+                    for (const element of Array.from(elems)) {
 
                         switch (element.textContent) {
                             case " projects ":
+                                makeLineClickable(element, './pages/projects.html')
                                 element.replaceWith(makeA('./pages/projects.html', ' projects '))
                                 break;
 
                             case " services ":
+                                makeLineClickable(element, './pages/services.html')
                                 element.replaceWith(makeA('./pages/services.html', ' services '))
                                 break;
                         
                             case " aboutMe ":
+                                makeLineClickable(element, '#')
                                 element.replaceWith(makeA('#', ' aboutMe '))
                                 break;
 
                             case " contactMe ":
+                                makeLineClickable(element, '#')
                                 element.replaceWith(makeA('#', ' contactMe '))
                                 break;
 
