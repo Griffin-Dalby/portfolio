@@ -171,115 +171,126 @@ function typeWriterWords(element, txt, i, spd) {
 }
 
 // Start
-typeNextLine('boot-text', moduleLines).then(()=>{
-    setTimeout(()=>{
-        typeNextLine('boot-text', scriptLines).then(()=>{
-            setTimeout(()=>{
-                // Hero
-                const myName = document.createElement('h1')
-                const mySkills = document.createElement('h2')
-                const desc1 = document.createElement('h3'), desc2 = document.createElement('h3')
+const urlParams = new URLSearchParams(window.location.search)
+const skipIntro = urlParams.has('skipintro')
 
-                const heroLeft = document.getElementById('hero-left')
-                heroLeft.appendChild(myName)
-                heroLeft.appendChild(mySkills)
-                heroLeft.appendChild(desc1)
-                heroLeft.appendChild(desc2)
+function buildMainSite() {
+    // Hero
+    const myName = document.createElement('h1')
+    const mySkills = document.createElement('h2')
+    const desc1 = document.createElement('h3'), desc2 = document.createElement('h3')
 
-                typeWriter(myName, heroLines[0], 0, 20)
-                    .then(() => typeWriterWords(mySkills, heroLines[1], 0, 20))
-                    .then(() => typeWriterWords(desc1, heroLines[2], 0, 10))
-                    .then(() => typeWriterWords(desc2, heroLines[3], 0, 10))
-                    
-                const pre = document.createElement('pre')
-                const code = document.createElement('code')
-                code.className = 'language-lua'
-                code.id = 'hero-web-code'
+    const heroLeft = document.getElementById('hero-left')
+    heroLeft.appendChild(myName)
+    heroLeft.appendChild(mySkills)
+    heroLeft.appendChild(desc1)
+    heroLeft.appendChild(desc2)
 
-                pre.appendChild(code)
-                heroLeft.appendChild(pre)
+    typeWriter(myName, heroLines[0], 0, 20)
+        .then(() => typeWriterWords(mySkills, heroLines[1], 0, 20))
+        .then(() => typeWriterWords(desc1, heroLines[2], 0, 10))
+        .then(() => typeWriterWords(desc2, heroLines[3], 0, 10))
+        
+    const pre = document.createElement('pre')
+    const code = document.createElement('code')
+    code.className = 'language-lua'
+    code.id = 'hero-web-code'
 
-                typeNextLine('hero-griff-code', heroCode)
-                typeNextLine('hero-web-code', heroWebCode).then(() => {
-                    const elems = document.getElementById('hero-web-code').childNodes
-                    function makeA(href, innerHTML) {
-                        const a = document.createElement('a')
-                        a.href = href
-                        a.innerHTML = innerHTML
-                        a.className = 'web-code-page'
+    pre.appendChild(code)
+    heroLeft.appendChild(pre)
 
-                        return a
-                    }
+    typeNextLine('hero-griff-code', heroCode)
+    typeNextLine('hero-web-code', heroWebCode).then(() => {
+        const elems = document.getElementById('hero-web-code').childNodes
+        function makeA(href, innerHTML) {
+            const a = document.createElement('a')
+            a.href = href
+            a.innerHTML = innerHTML
+            a.className = 'web-code-page'
 
-                    function makeLineClickable(element, href) {
-                        const codeElement = document.getElementById('hero-web-code')
-                        let lineContent = element
+            return a
+        }
 
-                        while (lineContent.parentNode && lineContent.parentNode !== codeElement) {
-                            lineContent = lineContent.parentNode
-                        }
-                        if (lineContent.parentNode !== codeElement) return
+        function makeLineClickable(element, href) {
+            const codeElement = document.getElementById('hero-web-code')
+            let lineContent = element
 
-                        const siblings = Array.from(codeElement.childNodes)
-                        const lineIndex = siblings.indexOf(lineContent)
-                        let start = lineIndex
-                        let end = lineIndex
+            while (lineContent.parentNode && lineContent.parentNode !== codeElement) {
+                lineContent = lineContent.parentNode
+            }
+            if (lineContent.parentNode !== codeElement) return
 
-                        while (start > 0) {
-                            const previous = siblings[start - 1]
-                            if (previous.nodeType === Node.TEXT_NODE && previous.textContent.includes('\n')) break
-                            start--
-                        }
-                        while (end + 1 < siblings.length) {
-                            const next = siblings[end + 1]
-                            if (next.nodeType === Node.TEXT_NODE && next.textContent.includes('\n')) break
-                            end++
-                        }
+            const siblings = Array.from(codeElement.childNodes)
+            const lineIndex = siblings.indexOf(lineContent)
+            let start = lineIndex
+            let end = lineIndex
 
-                        const lineLink = document.createElement('a')
-                        lineLink.href = href
-                        lineLink.className = 'web-code-line'
-                        lineLink.style.color = 'inherit'
-                        lineLink.style.textDecoration = 'none'
-                        codeElement.insertBefore(lineLink, siblings[start])
-                        for (let index = start; index <= end; index++) {
-                            lineLink.appendChild(siblings[index])
-                        }
-                    }
+            while (start > 0) {
+                const previous = siblings[start - 1]
+                if (previous.nodeType === Node.TEXT_NODE && previous.textContent.includes('\n')) break
+                start--
+            }
+            while (end + 1 < siblings.length) {
+                const next = siblings[end + 1]
+                if (next.nodeType === Node.TEXT_NODE && next.textContent.includes('\n')) break
+                end++
+            }
 
-                    for (const element of Array.from(elems)) {
+            const lineLink = document.createElement('a')
+            lineLink.href = href
+            lineLink.className = 'web-code-line'
+            lineLink.style.color = 'inherit'
+            lineLink.style.textDecoration = 'none'
+            codeElement.insertBefore(lineLink, siblings[start])
+            for (let index = start; index <= end; index++) {
+                lineLink.appendChild(siblings[index])
+            }
+        }
 
-                        switch (element.textContent) {
-                            case " projects ":
-                                makeLineClickable(element, './pages/projects.html')
-                                element.replaceWith(makeA('./pages/projects.html', ' projects '))
-                                break;
+        for (const element of Array.from(elems)) {
 
-                            case " services ":
-                                makeLineClickable(element, './pages/services.html')
-                                element.replaceWith(makeA('./pages/services.html', ' services '))
-                                break;
-                        
-                            case " aboutMe ":
-                                makeLineClickable(element, '#')
-                                element.replaceWith(makeA('#', ' aboutMe '))
-                                break;
+            switch (element.textContent) {
+                case " projects ":
+                    makeLineClickable(element, './pages/projects.html')
+                    element.replaceWith(makeA('./pages/projects.html', ' projects '))
+                    break;
 
-                            case " contactMe ":
-                                makeLineClickable(element, '#')
-                                element.replaceWith(makeA('#', ' contactMe '))
-                                break;
+                case " services ":
+                    makeLineClickable(element, './pages/services.html')
+                    element.replaceWith(makeA('./pages/services.html', ' services '))
+                    break;
+            
+                case " aboutMe ":
+                    makeLineClickable(element, '#')
+                    element.replaceWith(makeA('#', ' aboutMe '))
+                    break;
 
-                            default:
-                                break;
-                        }
-                    };
-                })
-                
-                // Visibility
-                document.getElementById('site-content').style = `display: inherit;`
-                document.getElementById('boot-screen').style = `display: none;`
-            }, 400)
-        })
-    }, 400)
-})
+                case " contactMe ":
+                    makeLineClickable(element, '#')
+                    element.replaceWith(makeA('#', ' contactMe '))
+                    break;
+
+                default:
+                    break;
+            }
+        };
+    })
+    
+    // Visibility
+    document.getElementById('site-content').style = `display: inherit;`
+    document.getElementById('boot-screen').style = `display: none;`
+}
+
+if (!skipIntro) {
+    typeNextLine('boot-text', moduleLines).then(()=>{
+        setTimeout(()=>{
+            typeNextLine('boot-text', scriptLines).then(()=>{
+                setTimeout(()=>{
+                    buildMainSite()
+                }, 400)
+            })
+        }, 400)
+    })
+} else {
+    buildMainSite()
+}
