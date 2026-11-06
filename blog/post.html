@@ -3,7 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Blog Post - Griffin Dalby</title>
+    <meta name="robots" content="noindex, follow">
+    <title id="page-title">Game Development Article | Griffin Dalby</title>
+    <meta name="description" content="Technical articles by Griffin Dalby on Roblox game development, networking, physics, and systems engineering.">
+    <meta name="author" content="Griffin Dalby">
+    <link rel="canonical" href="https://griffin-dalby.github.io/portfolio/blog/post.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Griffin Dalby">
+    <meta property="og:title" content="Game Development Article | Griffin Dalby">
+    <meta property="og:description" content="Technical articles by Griffin Dalby on Roblox game development, networking, physics, and systems engineering.">
+    <meta property="og:url" content="https://griffin-dalby.github.io/portfolio/blog/post.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Game Development Article | Griffin Dalby">
+    <meta name="twitter:description" content="Technical articles by Griffin Dalby on Roblox game development, networking, physics, and systems engineering.">
     <link rel="stylesheet" href="../css/blog.css">
 </head>
 <body style="background-color: #151515;">
@@ -68,6 +80,20 @@
                 if (currentPost) {
                     const dateElement = document.getElementById('post-date')
                     dateElement.textContent = `${currentPost.date} • Griffin Dalby`
+
+                    const title = document.getElementById('post-title').textContent || currentPost.title
+                    const description = currentPost.description
+                    const postUrl = new URL('post.html', window.location.href)
+                    postUrl.searchParams.set('file', postFile)
+
+                    document.getElementById('page-title').textContent = `${title} | Griffin Dalby`
+                    document.querySelector('link[rel="canonical"]').href = postUrl.href
+                    document.querySelector('meta[name="description"]').content = description
+                    document.querySelector('meta[property="og:title"]').content = `${title} | Griffin Dalby`
+                    document.querySelector('meta[property="og:description"]').content = description
+                    document.querySelector('meta[property="og:url"]').content = postUrl.href
+                    document.querySelector('meta[name="twitter:title"]').content = `${title} | Griffin Dalby`
+                    document.querySelector('meta[name="twitter:description"]').content = description
                 }
             } catch (error) {
                 console.error('Failed to load metadata:', error)
